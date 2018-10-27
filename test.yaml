@@ -1,0 +1,24 @@
+---
+- name: Create new post
+  hosts: localhost
+  remote_user: root
+  # become_method: sudo
+  gather_facts: yes
+  connection: ssh
+  pre_tasks:
+    - name: Verify jekyll_project_path
+      fail:
+        msg: "Variable jekyll_project_path should be defined. Exiting."
+      when: jekyll_project_path is not defined
+  tasks:
+    - set_fact:
+          new_version: "x.x.x"
+
+    - debug: msg="new_version:{{ new_version }}"
+
+    - include_role:
+        name: jekyll
+        tasks_from: test_task
+      vars:
+         increment: bugfix
+         jekyll_project_path: "{{ jekyll_project_path }}"
