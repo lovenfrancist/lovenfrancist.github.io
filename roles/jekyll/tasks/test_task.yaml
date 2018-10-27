@@ -1,0 +1,13 @@
+---
+- set_fact:
+      new_version: "x.x.x"
+
+- debug: msg="new_version:{{ new_version }}"
+
+- name: Overwrite _config.yaml
+  template:
+    src: _config.yaml.j2
+    dest: "/home/ubuntu/_config.yml"
+    force: yes
+  vars:
+    version: "{{ new_version }}"
