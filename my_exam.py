@@ -15,7 +15,8 @@ class MyExam:
         post_title = ' '.join(post_body.split()[:5])
         post_date = time.strftime("%Y-%m-%d %H:%M:%S") + " +0000"
         newfile = time.strftime("%Y-%m-%d") + "-" + post_title + ".markdown"
-        post_dict={ 'post_title':post_title, 'post_body':post_body, 'post_date':post_date }
+        post_dict={ 'post_title':post_title, 'post_body':post_body, \
+            'post_date':post_date, 'layout':'post' }
 
         # read, write to file
         with open(os.path.join(os.getcwd(), \
