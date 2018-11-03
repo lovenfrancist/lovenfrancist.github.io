@@ -85,7 +85,7 @@ if __name__ == '__main__':
         print "Parameter required. Usage: python my_exam.py [dev|staging|build]"
         sys.exit()
     else:
-        if env.lower() not in ['dev', 'staging']:
+        if env.lower() not in ['dev', 'staging', 'build']:
             print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]"
             sys.exit()
 
