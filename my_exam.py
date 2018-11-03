@@ -58,19 +58,19 @@ class MyExam:
         print "Bumped version to : {0}".format(new_ver)
 
     def compile_site(self):
-        print subprocess.check_output("~/gems/bin/bundle exec , \
-        ~/gems/bin/jekyll build"], shell=True)
+        print subprocess.check_output("~/gems/bin/bundle exec \
+        ~/gems/bin/jekyll build", shell=True)
 
     def commit_code(self):
-        print subprocess.call("/usr/bin/git remote set-url origin\
+        print subprocess.check_output("/usr/bin/git remote set-url origin\
         git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
-        print subprocess.call("eval $(ssh-agent -s)", shell=True)
-        print subprocess.call("ssh-add ~/.ssh/id_rsa", shell=True)
+        print subprocess.check_output("eval $(ssh-agent -s)", shell=True)
+        print subprocess.check_output("ssh-add ~/.ssh/id_rsa", shell=True)
 
-        print subprocess.call("/usr/bin/git add -A", shell=True)
-        print subprocess.call("/usr/bin/git commit -m 'New Post {0}'"\
+        print subprocess.check_output("/usr/bin/git add -A", shell=True)
+        print subprocess.check_output("/usr/bin/git commit -m 'New Post {0}'"\
         .format(time.strftime("%Y-%m-%d %H:%M:%S")), shell=True)
-        print subprocess.call("/usr/bin/git push origin \
+        print subprocess.check_output("/usr/bin/git push origin \
         develop:develop", shell=True) #TEMP dev to master
 
 if __name__ == '__main__':
