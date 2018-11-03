@@ -6,16 +6,16 @@ UPSTREAM=${1:-'@{u}'}
 LOCAL=$(/usr/bin/git rev-parse @)
 REMOTE=$(/usr/bin/git rev-parse "$UPSTREAM")
 BASE=$(/usr/bin/git merge-base @ "$UPSTREAM")
-TAG=$(/usr/bin/git describe --exact-match HEAD @)
+TAG=$(/usr/bin/git describe @)
 
 if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
     /usr/bin/git pull origin develop #TEMP develop to master
+    /usr/bin/git fetch --tags
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
 else
     echo "Diverged"
 fi
- 
