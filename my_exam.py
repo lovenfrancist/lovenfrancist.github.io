@@ -74,7 +74,7 @@ class MyExam:
 
         # # tag
         # if self.env == 'staging':
-        #     print subprocess.check_output("/usr/bin/git tag -a {0}"\
+        #     print subprocess.check_output("/usr/bin/git tag -a v{0} -m 'v{0}'"\
         #     .format(self.new_ver), shell=True)
         #
         # # push
