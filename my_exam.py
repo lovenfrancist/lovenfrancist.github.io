@@ -58,8 +58,8 @@ class MyExam:
         print "Bumped version to : {0}".format(new_ver)
 
     def compile_site(self):
-        print subprocess.call(["~/gems/bin/bundle", "exec", \
-        "~/gems/bin/jekyll", "build"], shell=True)
+        print subprocess.check_output("~/gems/bin/bundle exec , \
+        ~/gems/bin/jekyll build"], shell=True)
 
     def commit_code(self):
         print subprocess.call("/usr/bin/git remote set-url origin\
