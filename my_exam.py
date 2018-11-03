@@ -55,6 +55,7 @@ class MyExam:
                 src = Template( config_template.read() )
                 fout.write(src.substitute(config_dict))
 
+        self.new_ver = new_ver
         print "Bumped version to : {0}".format(new_ver)
 
     def compile_site(self):
@@ -73,15 +74,19 @@ class MyExam:
         print subprocess.check_output("/usr/bin/git push origin \
         develop:develop", shell=True) #TEMP dev to master
 
+        if self.env == 'staging':
+            print subprocess.check_output("/usr/bin/git tag -a {0}"\
+            .format(self.new_ver), shell=True)
+
 if __name__ == '__main__':
     try:
         env = sys.argv[1]
     except IndexError:
-        print "Parameter required. Usage: python my_exam.py [dev|staging]"
+        print "Parameter required. Usage: python my_exam.py [dev|staging|build]"
         sys.exit()
     else:
         if env.lower() not in ['dev', 'staging']:
-            print "Invalid arguments. Usage: python my_exam.py [dev|staging]"
+            print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]"
             sys.exit()
 
         # add new post
@@ -90,10 +95,13 @@ if __name__ == '__main__':
             myexam.add_post()
 
         # bump version
-        myexam.bump_version()
+        if env.lower() in ['dev', 'staging']:
+            myexam.bump_version()
 
         # compile jekyll
-        myexam.compile_site()
+        if env.lower() == 'build':
+            myexam.compile_site()
 
         # commit
-        myexam.commit_code()
+        if env.lower() in ['dev', 'staging']:
+            myexam.commit_code()
