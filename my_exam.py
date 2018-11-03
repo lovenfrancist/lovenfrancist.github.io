@@ -71,12 +71,16 @@ class MyExam:
         print subprocess.check_output("/usr/bin/git add -A", shell=True)
         print subprocess.check_output("/usr/bin/git commit -m 'New Post {0}'"\
         .format(time.strftime("%Y-%m-%d %H:%M:%S")), shell=True)
-        print subprocess.check_output("/usr/bin/git push origin \
-        develop:develop", shell=True) #TEMP dev to master
 
+        # tag
         if self.env == 'staging':
             print subprocess.check_output("/usr/bin/git tag -a {0}"\
             .format(self.new_ver), shell=True)
+
+        # push
+        print subprocess.check_output("/usr/bin/git push origin \
+        develop:develop", shell=True) #TEMP dev to master
+
 
 if __name__ == '__main__':
     try:
