@@ -14,7 +14,7 @@ elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
     /usr/bin/git pull origin develop #TEMP develop to master
     /usr/bin/git fetch --tags
-    NEWTAG=$(/usr/bin/git describe @)
+    NEWTAG=$(/usr/bin/git describe --abbrev=0 @)
     echo "TAG:$TAG"
     echo "NEWTAG:$NEWTAG"
 elif [ $REMOTE = $BASE ]; then
