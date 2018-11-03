@@ -64,9 +64,12 @@ class MyExam:
     def commit_code(self):
         print subprocess.call("/usr/bin/git remote set-url origin\
         git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
+        print subprocess.call("eval $(ssh-agent -s)", shell=True)
+        print subprocess.call("ssh-add ~/.ssh/id_rsa", shell=True)
+
         print subprocess.call("/usr/bin/git add -A", shell=True)
         print subprocess.call("/usr/bin/git commit -m 'New Post {0}'"\
-        .format(time.strftime("%Y-%m-%d")), shell=True)
+        .format(time.strftime("%Y-%m-%d %H:%M:%S")), shell=True)
         print subprocess.call("/usr/bin/git push origin \
         develop:develop", shell=True) #TEMP dev to master
 
