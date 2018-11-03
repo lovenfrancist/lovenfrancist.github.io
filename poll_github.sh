@@ -6,7 +6,7 @@ UPSTREAM=${1:-'@{u}'}
 LOCAL=$(/usr/bin/git rev-parse @)
 REMOTE=$(/usr/bin/git rev-parse "$UPSTREAM")
 BASE=$(/usr/bin/git merge-base @ "$UPSTREAM")
-TAG=$(/usr/bin/git describe @)
+TAG=$(/usr/bin/git describe --abbrev=0 @)
 
 if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
