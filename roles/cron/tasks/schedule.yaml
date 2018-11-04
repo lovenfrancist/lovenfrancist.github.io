@@ -1,8 +1,23 @@
 # dev
 # */10 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py dev)
+- name: ensure dev script runs every 10 mins
+  cron:
+    name: "run script for DEV"
+    minute: "*/10"
+    job: "(cd ~/lovenfrancist.github.io && exec python my_exam.py dev)"
 
 # staging
 # 0 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py staging)
+- name: ensure staging script runs every hour
+  cron:
+    name: "run script for STAGING"
+    minute: "0"
+    job: "(cd ~/lovenfrancist.github.io && exec python my_exam.py staging)"
 
 # poll
 # */5 * * * * (cd ~/lovenfrancist.github.io && exec ./poll_github.sh)
+- name: ensure polling script runs every 5 mins
+  cron:
+    name: "run script for STAGING"
+    minute: "*/5"
+    job: "(cd ~/lovenfrancist.github.io && exec ./poll_github.sh)"
