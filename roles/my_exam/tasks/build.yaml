@@ -1,5 +1,5 @@
 - name: build DEV
-  shell: python my_exam.py dev
+  shell: python my_exam.py build /var/www/myexam.dev/html
   args:
     executable: /bin/bash
     chdir: "{{ playbook_dir }}"
@@ -10,7 +10,7 @@
     msg: "{{ build_dev_out }}"
 
 - name: build STAGING
-  shell: python my_exam.py staging
+  shell: python my_exam.py build /var/www/myexam.staging/html
   args:
     executable: /bin/bash
     chdir: "{{ playbook_dir }}"
