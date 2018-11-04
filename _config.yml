@@ -16,7 +16,7 @@
 title: My Exam
 email: loven.francis@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Version: 0.7.18
+  Version: 0.7.22
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
@@ -33,6 +33,7 @@ plugins:
 # to override the default setting.
 exclude:
     - templates
+    - roles
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules

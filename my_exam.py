@@ -60,8 +60,8 @@ class MyExam:
 
     def compile_site(self, build_dir=''):
         if os.path.isdir(build_dir):
-            print subprocess.check_output("~/gems/bin/bundle exec \
-            ~/gems/bin/jekyll build -d {0}".format(build_dir), shell=True)
+            print subprocess.check_output("bundle exec \
+            jekyll build -d {0}".format(build_dir), shell=True)
         else:
             if env.lower() == 'dev':
                 build_dir = '/var/www/myexam.dev/html'
@@ -69,11 +69,11 @@ class MyExam:
                 build_dir = '/var/www/myexam.staging/html'
 
             if os.path.isdir(build_dir):
-                print subprocess.check_output("~/gems/bin/bundle exec \
-                ~/gems/bin/jekyll build -d {0}".format(build_dir), shell=True)
+                print subprocess.check_output("bundle exec \
+                jekyll build -d {0}".format(build_dir), shell=True)
             else:
-                print subprocess.check_output("~/gems/bin/bundle exec \
-                ~/gems/bin/jekyll build", shell=True)
+                print subprocess.check_output("bundle exec \
+                jekyll build", shell=True)
 
     def commit_code(self):
         print subprocess.check_output("/usr/bin/git remote set-url origin\
