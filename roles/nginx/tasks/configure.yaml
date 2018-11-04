@@ -51,6 +51,12 @@
     path: /etc/nginx/sites-enabled/default
     state: absent
 
+- name: remove default dir
+  become: true
+  file:
+    path: /var/www/html
+    state: absent
+
 - name: Config bucket_size
   become: true
   template:

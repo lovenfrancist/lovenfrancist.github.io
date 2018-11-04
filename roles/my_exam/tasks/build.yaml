@@ -1,0 +1,13 @@
+- name: build DEV
+  shell: python my_exam.py dev
+  args:
+    executable: /bin/bash
+    chdir: "{{ playbook_dir }}"
+  register: build_dev_out
+
+- name: build STAGING
+  shell: python my_exam.py staging
+  args:
+    executable: /bin/bash
+    chdir: "{{ playbook_dir }}"
+  register: build_staging_out

@@ -15,3 +15,7 @@
     - include_role:
         name: cron
         tasks_from: schedule
+
+    - include_role:
+        name: my_exam
+        tasks_from: build
