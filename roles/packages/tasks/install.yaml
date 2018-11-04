@@ -9,6 +9,7 @@
     - ruby
     - ruby-dev
     - build-essential
+    - fortune
 
 - name: add environment variables to user's ~/.bashrc
   shell: |
