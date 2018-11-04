@@ -14,15 +14,8 @@
   gather_facts: yes
   connection: ssh
   tasks:
-    - name: update apt
-      command: apt-get update
-      register: apt_out
-
-    - name: apt_out:
-      debug:
-      msg: "{{ apt_out }}"
-
     - name: install packages
+      become: true
       package:
         name: "{{ item }}"
         state: present
@@ -37,47 +30,38 @@
       shell: |
         echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
         echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
-        source ~/.bashrc
       register: user_bashrc_out
 
-    - name: user_bashrc_out:
+    - name: user_bashrc_out
       debug:
-      msg: "{{ user_bashrc_out }}"
+        msg: "{{ user_bashrc_out }}"
+
+    - name: source
+      shell: source ~/.bashrc
+      args:
+        executable: /bin/bash
+      register: source_out
+
+    - name: source_out
+      debug:
+        msg: "{{ source_out }}"
 
     - name: install jekyll
+      become: true
       command: gem install jekyll bundler
       register: jekyll_install_out
 
-    - name: jekyll_install_out:
+    - name: jekyll_install_out
       debug:
-      msg: "{{ jekyll_install_out }}"
+        msg: "{{ jekyll_install_out }}"
 
+    - name: bundle install
+      shell: bundle install
+      args:
+        executable: /bin/bash
+        chdir: "{{ playbook_dir }}"
+      register: bundle_install_out
 
-
-    #
-
-    #   become: true
-    #   become_user: apache
-
-    # - include_role:
-    #     name: jekyll
-    #     tasks_from: add_post
-    #   vars:
-    #     post_date: "{{ ansible_date_time.date }}"
-    #   when: proj_env == "dev"
-    #
-    # - name: Set bump_increment
-    #   set_fact:
-    #     bump_increment: bugfix
-    #   when: proj_env == "dev"
-    #
-    # - name: Set bump_increment
-    #   set_fact:
-    #     bump_increment: minor
-    #   when: proj_env == "staging"
-    #
-    # - include_role:
-    #     name: jekyll
-    #     tasks_from: bump_version
-    #   vars:
-    #     increment: "{{ bump_increment }}"
+    - name: bundle_install_out
+      debug:
+        msg: "{{ bundle_install_out }}"
