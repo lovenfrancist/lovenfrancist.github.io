@@ -26,6 +26,7 @@ These need to be executed every login to ssh, unless you edit the user's `~/.bas
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 ```
+
 To test, run:
 ```bash
 ssh -T git@github.com
@@ -55,7 +56,8 @@ sudo apt-get install ansible
 If you have not already done so, you will need to clone, or create a local copy, of the [lovenfrancist.github.io repo](https://github.com/lovenfrancist/lovenfrancist.github.io). For more on how to clone the repo, view [git clone help](https://git-scm.com/docs/git-clone).
 
 ```bash
-git clone git@github.com:lovenfrancist/lovenfrancist.github.io.git```
+git clone git@github.com:lovenfrancist/lovenfrancist.github.io.git
+```
 
 Once you have a local copy, run commands within the root of the project tree.
 
