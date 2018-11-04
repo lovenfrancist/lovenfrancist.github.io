@@ -58,7 +58,7 @@ class MyExam:
         self.new_ver = new_ver
         print "Bumped version to : {0}".format(new_ver)
 
-    def compile_site(self, build_dir=None):
+    def compile_site(self, build_dir=''):
         if os.path.isdir(build_dir):
             print subprocess.check_output("~/gems/bin/bundle exec \
             ~/gems/bin/jekyll build -d {0}".format(build_dir), shell=True)
