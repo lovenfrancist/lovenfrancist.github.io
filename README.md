@@ -26,7 +26,7 @@ eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 ```
 
-## install ansible
+## install ansible (ubuntu)
 
 ```bash
 sudo apt-get update
@@ -63,6 +63,16 @@ This script will already be scheduled to run through `cron`, but to run the scri
 # Build directories
 The following are the default build directories for `dev/staging` environments and for `build` option:
 
-    /var/www/myexam.dev/html
+    `/var/www/myexam.dev/html
     /var/www/myexam.staging/html
-    /path/to/local/git/repo/_site
+    /path/to/local/git/repo/_site`
+
+# Viewing directories
+To view the static website, go to the server's hostname/IP address:
+
+For dev:
+
+    http://<hostname/IP address>:81
+For staging:
+
+    http://<hostname/IP address>
