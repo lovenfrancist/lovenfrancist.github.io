@@ -58,9 +58,22 @@ class MyExam:
         self.new_ver = new_ver
         print "Bumped version to : {0}".format(new_ver)
 
-    def compile_site(self):
-        print subprocess.check_output("~/gems/bin/bundle exec \
-        ~/gems/bin/jekyll build", shell=True)
+    def compile_site(self, build_dir=None):
+        if os.path.isdir(build_dir):
+            print subprocess.check_output("~/gems/bin/bundle exec \
+            ~/gems/bin/jekyll build -d {0}".format(build_dir), shell=True)
+        else:
+            if env.lower() == 'dev':
+                build_dir = '/var/www/myexam.dev/html'
+            elif env.lower() == 'staging':
+                build_dir = '/var/www/myexam.staging/html'
+
+            if os.path.isdir(build_dir):
+                print subprocess.check_output("~/gems/bin/bundle exec \
+                ~/gems/bin/jekyll build -d {0}".format(build_dir), shell=True)
+            else:
+                print subprocess.check_output("~/gems/bin/bundle exec \
+                ~/gems/bin/jekyll build", shell=True)
 
     def commit_code(self):
         print subprocess.check_output("/usr/bin/git remote set-url origin\
@@ -89,25 +102,30 @@ if __name__ == '__main__':
     try:
         env = sys.argv[1]
     except IndexError:
-        print "Parameter required. Usage: python my_exam.py [dev|staging|build]"
+        print "Parameter required. Usage: python my_exam.py [dev|staging|build]\
+         [environment directory (optional)]"
         sys.exit()
-    else:
-        if env.lower() not in ['dev', 'staging', 'build']:
-            print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]"
-            sys.exit()
 
-        # add new post
-        myexam = MyExam(env)
-        if env.lower() == 'dev':
-            myexam.add_post()
+    if env.lower() not in ['dev', 'staging', 'build']:
+        print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]\
+         [environment directory (optional)]"
+        sys.exit()
 
-        # bump version
-        if env.lower() in ['dev', 'staging']:
-            myexam.bump_version()
+    # add new post
+    myexam = MyExam(env)
+    if env.lower() == 'dev':
+        myexam.add_post()
 
-        # compile jekyll
+    # bump version
+    if env.lower() in ['dev', 'staging']:
+        myexam.bump_version()
+
+    # compile jekyll
+    try:
+        myexam.compile_site(sys.argv[2])
+    except IndexError:
         myexam.compile_site()
 
-        # commit
-        if env.lower() in ['dev', 'staging']:
-            myexam.commit_code()
+    # commit
+    if env.lower() in ['dev', 'staging']:
+        myexam.commit_code()
