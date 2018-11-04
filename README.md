@@ -19,6 +19,13 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod og-wx ~/.ssh/authorized_keys
 ```
 
+## ssh-agent
+These need to be executed every login to ssh, unless you edit the user's `~/.bash_profile`:
+
+```bash
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+```
 To test, run:
 ```bash
 ssh -T git@github.com
@@ -32,14 +39,6 @@ RSA key fingerprint is SHA256:nThbg6kXYZ0l7E1IGOCspRomTxdABCDviKw6E5SY8.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'github.com,192.nn.253.nnn' (RSA) to the list of known hosts.
 Hi lovenfrancist! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-## ssh-agent
-These need to be executed every login to ssh, unless you edit the user's `~/.bash_profile`:
-
-```bash
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
 ```
 
 ## install ansible (ubuntu)
@@ -89,14 +88,17 @@ This script will already be scheduled to run through `cron`, but to run the scri
 ./poll_github.sh
 ```
 
+# Other info
 ## Build directories
 The following are the default build directories for `dev/staging` environments and for `build` option:
 
-    `/var/www/myexam.dev/html
-    /var/www/myexam.staging/html
-    /path/to/local/git/repo/_site`
+```
+/var/www/myexam.dev/html
+/var/www/myexam.staging/html
+/path/to/local/git/repo/_site
+```
 
-## Viewing directories
+## Viewing the website
 To view the static website, go to the server's hostname/IP address:
 
 For dev:
