@@ -78,8 +78,9 @@ class MyExam:
     def commit_code(self):
         print subprocess.check_output("/usr/bin/git remote set-url origin\
         git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
-        print subprocess.check_output("eval $(ssh-agent -s)", shell=True)
-        print subprocess.check_output("ssh-add ~/.ssh/id_rsa", shell=True)
+        print subprocess.check_output("eval $(ssh-agent -s) && \
+        ssh-add ~/.ssh/id_rsa", shell=True)
+        # print subprocess.check_output("ssh-add ~/.ssh/id_rsa", shell=True)
 
         print subprocess.check_output("/usr/bin/git add -A", shell=True)
         print subprocess.check_output("/usr/bin/git commit -m 'New Post {0}'"\
