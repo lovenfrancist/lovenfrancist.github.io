@@ -59,3 +59,10 @@ This script will already be scheduled to run through `cron`, but to run the scri
 ```bash
 ./poll_github.sh
 ```
+
+# Build directories
+The following are the default build directories for `dev/staging` environments and for `build` option:
+
+    /var/www/myexam.dev/html
+    /var/www/myexam.staging/html
+    /path/to/local/git/repo/_site
