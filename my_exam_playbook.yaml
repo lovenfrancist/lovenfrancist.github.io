@@ -1,0 +1,83 @@
+# dev
+# */10 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py dev)
+
+# staging
+# 0 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py staging)
+
+# poll
+# */5 * * * * (cd ~/lovenfrancist.github.io && exec ./poll_github.sh)
+
+# run this playbook using a non-root user with sudo privileges
+---
+- name: Create new post
+  hosts: localhost
+  gather_facts: yes
+  connection: ssh
+  tasks:
+    - name: update apt
+      command: apt-get update
+      register: apt_out
+
+    - name: apt_out:
+      debug:
+      msg: "{{ apt_out }}"
+
+    - name: install packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - nginx
+        - git
+        - ruby
+        - ruby-dev
+        - build-essential
+
+    - name: add environment variables to user's ~/.bashrc
+      shell: |
+        echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
+        echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
+        source ~/.bashrc
+      register: user_bashrc_out
+
+    - name: user_bashrc_out:
+      debug:
+      msg: "{{ user_bashrc_out }}"
+
+    - name: install jekyll
+      command: gem install jekyll bundler
+      register: jekyll_install_out
+
+    - name: jekyll_install_out:
+      debug:
+      msg: "{{ jekyll_install_out }}"
+
+
+
+    #
+
+    #   become: true
+    #   become_user: apache
+
+    # - include_role:
+    #     name: jekyll
+    #     tasks_from: add_post
+    #   vars:
+    #     post_date: "{{ ansible_date_time.date }}"
+    #   when: proj_env == "dev"
+    #
+    # - name: Set bump_increment
+    #   set_fact:
+    #     bump_increment: bugfix
+    #   when: proj_env == "dev"
+    #
+    # - name: Set bump_increment
+    #   set_fact:
+    #     bump_increment: minor
+    #   when: proj_env == "staging"
+    #
+    # - include_role:
+    #     name: jekyll
+    #     tasks_from: bump_version
+    #   vars:
+    #     increment: "{{ bump_increment }}"
