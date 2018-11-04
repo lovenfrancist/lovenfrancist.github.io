@@ -1,67 +1,17 @@
-# dev
-# */10 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py dev)
-
-# staging
-# 0 * * * * (cd ~/lovenfrancist.github.io && exec python my_exam.py staging)
-
-# poll
-# */5 * * * * (cd ~/lovenfrancist.github.io && exec ./poll_github.sh)
-
-# run this playbook using a non-root user with sudo privileges
 ---
 - name: Create new post
   hosts: localhost
   gather_facts: yes
   connection: ssh
   tasks:
-    - name: install packages
-      become: true
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - nginx
-        - git
-        - ruby
-        - ruby-dev
-        - build-essential
+    - include_role:
+        name: packages
+        tasks_from: install
 
-    - name: add environment variables to user's ~/.bashrc
-      shell: |
-        echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
-        echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
-      register: user_bashrc_out
+    - include_role:
+        name: nginx
+        tasks_from: configure
 
-    - name: user_bashrc_out
-      debug:
-        msg: "{{ user_bashrc_out }}"
-
-    - name: source
-      shell: source ~/.bashrc
-      args:
-        executable: /bin/bash
-      register: source_out
-
-    - name: source_out
-      debug:
-        msg: "{{ source_out }}"
-
-    - name: install jekyll
-      become: true
-      command: gem install jekyll bundler
-      register: jekyll_install_out
-
-    - name: jekyll_install_out
-      debug:
-        msg: "{{ jekyll_install_out }}"
-
-    - name: bundle install
-      shell: bundle install
-      args:
-        executable: /bin/bash
-        chdir: "{{ playbook_dir }}"
-      register: bundle_install_out
-
-    - name: bundle_install_out
-      debug:
-        msg: "{{ bundle_install_out }}"
+    - include_role:
+        name: cron
+        tasks_from: schedule

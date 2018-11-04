@@ -1,0 +1,51 @@
+- name: install packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - nginx
+    - git
+    - ruby
+    - ruby-dev
+    - build-essential
+
+- name: add environment variables to user's ~/.bashrc
+  shell: |
+    echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
+    echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
+  register: user_bashrc_out
+
+- name: user_bashrc_out
+  debug:
+    msg: "{{ user_bashrc_out }}"
+
+- name: source
+  shell: source ~/.bashrc
+  args:
+    executable: /bin/bash
+  register: source_out
+
+- name: source_out
+  debug:
+    msg: "{{ source_out }}"
+
+- name: install jekyll
+  become: true
+  command: gem install jekyll bundler
+  register: jekyll_install_out
+
+- name: jekyll_install_out
+  debug:
+    msg: "{{ jekyll_install_out }}"
+
+- name: bundle install
+  shell: bundle install
+  args:
+    executable: /bin/bash
+    chdir: "{{ playbook_dir }}"
+  register: bundle_install_out
+
+- name: bundle_install_out
+  debug:
+    msg: "{{ bundle_install_out }}"
