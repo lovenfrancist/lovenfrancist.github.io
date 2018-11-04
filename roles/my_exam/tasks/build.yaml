@@ -11,3 +11,5 @@
     executable: /bin/bash
     chdir: "{{ playbook_dir }}"
   register: build_staging_out
+  notify:
+    - restart nginx
