@@ -35,14 +35,14 @@
   become: true
   file:
     src: /etc/nginx/sites-available/myexam.dev
-    dest: /etc/nginx/sites-enabled/
+    dest: /etc/nginx/sites-enabled/myexam.dev
     state: link
 
 - name: create STAGING link
   become: true
   file:
     src: /etc/nginx/sites-available/myexam.staging
-    dest: /etc/nginx/sites-enabled/
+    dest: /etc/nginx/sites-enabled/myexam.staging
     state: link
 
 - name: remove default link
