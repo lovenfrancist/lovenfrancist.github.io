@@ -15,6 +15,8 @@ class MyExam:
         post_title = ' '.join(post_body.split()[:5])
         post_date = time.strftime("%Y-%m-%d %H:%M:%S") + " +0000"
         newfile = time.strftime("%Y-%m-%d") + "-" + post_title + ".markdown"
+        newfile = newfile.replace('"', '')
+        newfile = newfile.replace("'", '')
         post_dict={ 'post_title':post_title, 'post_body':post_body, \
             'post_date':post_date, 'layout':'post' }
 
