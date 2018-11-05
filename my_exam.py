@@ -144,4 +144,5 @@ if __name__ == '__main__':
         if env.lower() in ['dev', 'staging']:
             myexam.commit_code()
     except Exception, e:
-        print str(e)
+        print(sys.exc_info()[0])
+
