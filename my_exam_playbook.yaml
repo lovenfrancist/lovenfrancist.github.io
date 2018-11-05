@@ -40,7 +40,7 @@
         tasks_from: build
       vars:
         envi: "{{ env }}"
-      tags: [ 'never', 'build', 'commit' ]
+      tags: [ 'never', 'commit' ]
 
     - include_role:
         name: my_exam

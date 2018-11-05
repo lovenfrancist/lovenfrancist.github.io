@@ -6,26 +6,38 @@
     /usr/bin/git add -A
     /usr/bin/git commit -m 'New Post - {{ ansible_date_time.date }}'
   register: commit_code_out
+  tags:
+    - commit
 
 - name: commit_code_out
   debug:
     msg: "{{ commit_code_out }}"
+  tags:
+    - commit
 
 - name: Get current version
   include_vars:
     file: "{{ playbook_dir }}/_config.yml"
+  tags:
+    - commit
 
 - name: Initialize current_version variable
   set_fact:
     current_version: "{{ description.split(':')[1].strip() }}"
+  tags:
+    - commit
 
 - name: create tag
   shell: |
     /usr/bin/git tag -a v{0} -m, 'v{{ current_version }}'
     /usr/bin/git push origin v{{ current_version }}
   register: create_tag_out
-  when: {{ envi }} == "staging"
+  when: envi == "staging"
+  tags:
+    - commit
 
 - name: create_tag_out
   debug:
     msg: "{{ create_tag_out }}"
+  tags:
+    - commit
