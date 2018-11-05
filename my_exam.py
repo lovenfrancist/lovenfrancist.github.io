@@ -81,36 +81,36 @@ class MyExam:
                 "jekyll", "build", "-d", "{0}".format(build_dir)], shell=True)
                 print "Compiled at: {0}".format(build_dir)
             else:
-                print subprocess.check_output(["bundle", "exec" \
+                print subprocess.check_output(["bundle", "exec", \
                 "jekyll", "build"], shell=True)
                 print "Compiled at: {0}".format(build_dir)
 
-        print subprocess.check_output("sudo nginx -s reload", shell=True)
-        print subprocess.check_output("sudo service nginx restart", shell=True)
+        print subprocess.check_output(["sudo", "nginx", "-s", "reload"], shell=True)
+        print subprocess.check_output(["sudo", "service", "nginx", "restart"], shell=True)
 
     def commit_code(self):
         print "Commiting code"
-        print subprocess.check_output("/usr/bin/git remote set-url origin\
-        git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
-        print subprocess.check_output("eval $(ssh-agent -s) && \
-        ssh-add ~/.ssh/id_rsa", shell=True)
+        print subprocess.check_output(["/usr/bin/git", "remote", "set-url", "origin",\
+        "git@github.com:lovenfrancist/lovenfrancist.github.io.git"], shell=True)
+        print subprocess.check_output(["eval", "$(ssh-agent -s)", "&&", \
+        "ssh-add", "~/.ssh/id_rsa"], shell=True)
         # print subprocess.check_output("ssh-add ~/.ssh/id_rsa", shell=True)
 
-        print subprocess.check_output("/usr/bin/git add -A", shell=True)
-        print subprocess.check_output("/usr/bin/git commit -m 'New Post {0}'"\
-        .format(time.strftime("%Y-%m-%d %H:%M:%S")), shell=True)
+        print subprocess.check_output(["/usr/bin/git", "add", "-A"], shell=True)
+        print subprocess.check_output(["/usr/bin/git", "commit", "-m", "'New Post {0}'"\
+        .format(time.strftime("%Y-%m-%d %H:%M:%S"))], shell=True)
 
         # tag
         if self.env == 'staging':
-            print subprocess.check_output("/usr/bin/git tag -a v{0} -m 'v{0}'"\
-            .format(self.new_ver), shell=True)
+            print subprocess.check_output(["/usr/bin/git", "tag", "-a", "v{0}", "-m", "'v{0}'"\
+            .format(self.new_ver)], shell=True)
 
-            print subprocess.check_output("/usr/bin/git push origin v{0}"\
-            .format(self.new_ver), shell=True)
+            print subprocess.check_output(["/usr/bin/git", "push", "origin", "v{0}"\
+            .format(self.new_ver)], shell=True)
 
         # push
-        print subprocess.check_output("/usr/bin/git push origin \
-        develop:develop", shell=True) #TEMP dev to master
+        print subprocess.check_output(["/usr/bin/git", "push", "origin", \
+        "develop:develop"], shell=True) #TEMP dev to master
 
 
 if __name__ == '__main__':
