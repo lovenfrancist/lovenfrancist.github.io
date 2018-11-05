@@ -8,6 +8,7 @@ from string import Template
 class MyExam:
     def __init__(self, env):
         self.env = env.lower()
+        self.myexam_path = os.path.realpath(__file__)
 
     def add_post(self):
         # initialize variables
@@ -21,9 +22,9 @@ class MyExam:
             'post_date':post_date, 'layout':'post' }
 
         # read, write to file
-        with open(os.path.join(os.getcwd(), \
+        with open(os.path.join(self.myexam_path, \
         "templates", "post.j2"), "rt") as post_template:
-            with open(os.path.join(os.getcwd(), "_posts", newfile), "wt") as fout:
+            with open(os.path.join(self.myexam_path, "_posts", newfile), "wt") as fout:
                 src = Template( post_template.read() )
                 fout.write(src.substitute(post_dict))
 
@@ -31,7 +32,7 @@ class MyExam:
 
     def bump_version(self):
         # get current version
-        with open(os.path.join(os.getcwd(), "_config.yml"), "rt") as config:
+        with open(os.path.join(self.myexam_path, "_config.yml"), "rt") as config:
             data = yaml.load(config)
             current_ver = data["description"].split(':')[1].strip()
 
@@ -51,9 +52,9 @@ class MyExam:
 
         # update config
         config_dict={ 'version':new_ver }
-        with open(os.path.join(os.getcwd(), \
+        with open(os.path.join(self.myexam_path, \
         "templates", "_config.yml.j2"), "rt") as config_template:
-            with open(os.path.join(os.getcwd(), "_config.yml"), "wt") as fout:
+            with open(os.path.join(self.myexam_path, "_config.yml"), "wt") as fout:
                 src = Template( config_template.read() )
                 fout.write(src.substitute(config_dict))
 
