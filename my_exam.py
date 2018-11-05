@@ -112,32 +112,35 @@ class MyExam:
 
 if __name__ == '__main__':
     try:
-        env = sys.argv[1]
-    except IndexError:
-        print "Parameter required. Usage: python my_exam.py [dev|staging|build]\
-         [environment directory (optional)]"
-        sys.exit()
+        try:
+            env = sys.argv[1]
+        except IndexError:
+            print "Parameter required. Usage: python my_exam.py [dev|staging|build]\
+             [environment directory (optional)]"
+            sys.exit()
 
-    if env.lower() not in ['dev', 'staging', 'build']:
-        print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]\
-         [environment directory (optional)]"
-        sys.exit()
+        if env.lower() not in ['dev', 'staging', 'build']:
+            print "Invalid arguments. Usage: python my_exam.py [dev|staging|build]\
+             [environment directory (optional)]"
+            sys.exit()
 
-    # add new post
-    myexam = MyExam(env)
-    if env.lower() == 'dev':
-        myexam.add_post()
+        # add new post
+        myexam = MyExam(env)
+        if env.lower() == 'dev':
+            myexam.add_post()
 
-    # bump version
-    if env.lower() in ['dev', 'staging']:
-        myexam.bump_version()
+        # bump version
+        if env.lower() in ['dev', 'staging']:
+            myexam.bump_version()
 
-    # compile jekyll
-    try:
-        myexam.compile_site(sys.argv[2])
-    except IndexError:
-        myexam.compile_site()
+        # compile jekyll
+        try:
+            myexam.compile_site(sys.argv[2])
+        except IndexError:
+            myexam.compile_site()
 
-    # commit
-    if env.lower() in ['dev', 'staging']:
-        myexam.commit_code()
+        # commit
+        if env.lower() in ['dev', 'staging']:
+            myexam.commit_code()
+    except Exception, e:
+        print str(e)
