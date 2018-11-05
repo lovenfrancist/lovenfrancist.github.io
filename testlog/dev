@@ -1,0 +1,185 @@
+Added new post: You will be advanced socially,
+Bumped version to : 0.9.21
+Added new post: You have literary talent that
+Bumped version to : 0.9.22
+Added new post: Q: Why does Washington have
+Bumped version to : 0.9.23
+Added new post: A classic is something that
+Bumped version to : 0.9.24
+Added new post: Exercise caution in your daily
+Bumped version to : 0.10.25
+Added new post: You like to form new
+Bumped version to : 0.10.26
+Added new post: They spell it "da Vinci"
+Bumped version to : 0.10.27
+Added new post: Alimony and bribes will engage
+Bumped version to : 0.11.28
+Added new post: A man was reading The
+Bumped version to : 0.11.29
+Added new post: Q: Why do WASPs play
+Bumped version to : 0.11.30
+Added new post: Q: What lies on the
+Bumped version to : 0.12.31
+Added new post: Q: Do you know what
+Bumped version to : 0.12.32
+Configuration file: /home/ubuntu/lovenfrancist.github.io/_config.yml
+            Source: /home/ubuntu/lovenfrancist.github.io
+       Destination: /var/www/myexam.dev/html
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.734 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+
+Compiled at: /var/www/myexam.dev/html
+
+Agent pid 5879
+
+
+[develop 3c87f3f] New Post 2018-11-05 16:07:06
+ Committer: Ubuntu <ubuntu@ip-172-31-28-252.ap-southeast-1.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 17 files changed, 170 insertions(+), 1 deletion(-)
+ create mode 100644 _posts/2018-11-05-A classic is something that.markdown
+ create mode 100644 _posts/2018-11-05-A man was reading The.markdown
+ create mode 100644 _posts/2018-11-05-Alimony and bribes will engage.markdown
+ create mode 100644 _posts/2018-11-05-Exercise caution in your daily.markdown
+ create mode 100644 _posts/2018-11-05-Q: Do you know what.markdown
+ create mode 100644 _posts/2018-11-05-Q: What lies on the.markdown
+ create mode 100644 _posts/2018-11-05-Q: Why do WASPs play.markdown
+ create mode 100644 _posts/2018-11-05-Q: Why does Washington have.markdown
+ create mode 100644 "_posts/2018-11-05-They spell it \"da Vinci\".markdown"
+ create mode 100644 _posts/2018-11-05-You have literary talent that.markdown
+ create mode 100644 _posts/2018-11-05-You like to form new.markdown
+ create mode 100644 _posts/2018-11-05-You will be advanced socially,.markdown
+ create mode 100644 testlog/build
+ create mode 100644 testlog/dev
+ create mode 100644 testlog/poll
+ create mode 100644 testlog/staging
+
+Added new post: The first thing we do,
+Bumped version to : 0.12.33
+Configuration file: /home/ubuntu/lovenfrancist.github.io/_config.yml
+            Source: /home/ubuntu/lovenfrancist.github.io
+       Destination: /var/www/myexam.dev/html
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.714 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+
+Compiled at: /var/www/myexam.dev/html
+
+Agent pid 5998
+
+
+[develop bd2d419] New Post 2018-11-05 16:07:59
+ Committer: Ubuntu <ubuntu@ip-172-31-28-252.ap-southeast-1.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 57 insertions(+), 1 deletion(-)
+ create mode 100644 _posts/2018-11-05-The first thing we do,.markdown
+
+
+Added new post: Unless hours were cups of
+Bumped version to : 0.12.34
+Configuration file: /home/ubuntu/lovenfrancist.github.io/_config.yml
+            Source: /home/ubuntu/lovenfrancist.github.io
+       Destination: /var/www/myexam.dev/html
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.6 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+
+Compiled at: /var/www/myexam.dev/html
+
+Agent pid 6030
+
+
+[develop a7fe5f9] New Post 2018-11-05 16:09:05
+ Committer: Ubuntu <ubuntu@ip-172-31-28-252.ap-southeast-1.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 16 files changed, 47 insertions(+), 103 deletions(-)
+ delete mode 100644 _posts/2018-11-05-A classic is something that.markdown
+ delete mode 100644 _posts/2018-11-05-A man was reading The.markdown
+ delete mode 100644 _posts/2018-11-05-Alimony and bribes will engage.markdown
+ delete mode 100644 _posts/2018-11-05-Exercise caution in your daily.markdown
+ delete mode 100644 _posts/2018-11-05-Q: Do you know what.markdown
+ delete mode 100644 _posts/2018-11-05-Q: What lies on the.markdown
+ delete mode 100644 _posts/2018-11-05-Q: Why do WASPs play.markdown
+ delete mode 100644 _posts/2018-11-05-Q: Why does Washington have.markdown
+ delete mode 100644 _posts/2018-11-05-The first thing we do,.markdown
+ delete mode 100644 "_posts/2018-11-05-They spell it \"da Vinci\".markdown"
+ create mode 100644 _posts/2018-11-05-Unless hours were cups of.markdown
+ delete mode 100644 _posts/2018-11-05-You have literary talent that.markdown
+ delete mode 100644 _posts/2018-11-05-You like to form new.markdown
+ delete mode 100644 _posts/2018-11-05-You will be advanced socially,.markdown
+
+
+Added new post: You have literary talent that
+Bumped version to : 0.12.35
+Configuration file: /home/ubuntu/lovenfrancist.github.io/_config.yml
+            Source: /home/ubuntu/lovenfrancist.github.io
+       Destination: /var/www/myexam.dev/html
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.602 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+
+Compiled at: /var/www/myexam.dev/html
+
+Agent pid 6052
+
+
+[develop 32b7aa0] New Post 2018-11-05 16:09:40
+ Committer: Ubuntu <ubuntu@ip-172-31-28-252.ap-southeast-1.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 55 insertions(+), 1 deletion(-)
+ create mode 100644 _posts/2018-11-05-You have literary talent that.markdown
+
+
