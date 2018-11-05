@@ -61,6 +61,8 @@ class MyExam:
         print "Bumped version to : {0}".format(new_ver)
 
     def compile_site(self, build_dir=''):
+        print "Compiling at: {0}".format(build_dir)
+
         if os.path.isdir(build_dir):
             print subprocess.check_output("bundle exec \
             jekyll build -d {0}".format(build_dir), shell=True)
@@ -84,6 +86,7 @@ class MyExam:
         print subprocess.check_output("sudo service nginx restart", shell=True)
 
     def commit_code(self):
+        print "Commiting code"
         print subprocess.check_output("/usr/bin/git remote set-url origin\
         git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
         print subprocess.check_output("eval $(ssh-agent -s) && \
