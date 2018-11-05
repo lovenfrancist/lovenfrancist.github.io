@@ -62,6 +62,7 @@ class MyExam:
         if os.path.isdir(build_dir):
             print subprocess.check_output("bundle exec \
             jekyll build -d {0}".format(build_dir), shell=True)
+            print "Compiled at: {0}".format(build_dir)
         else:
             if env.lower() == 'dev':
                 build_dir = '/var/www/myexam.dev/html'
@@ -71,9 +72,11 @@ class MyExam:
             if os.path.isdir(build_dir):
                 print subprocess.check_output("bundle exec \
                 jekyll build -d {0}".format(build_dir), shell=True)
+                print "Compiled at: {0}".format(build_dir)
             else:
                 print subprocess.check_output("bundle exec \
                 jekyll build", shell=True)
+                print "Compiled at: {0}".format(build_dir)
 
     def commit_code(self):
         print subprocess.check_output("/usr/bin/git remote set-url origin\
