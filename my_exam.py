@@ -14,10 +14,10 @@ class MyExam:
         # initialize variables
         post_body = subprocess.check_output("/usr/games/fortune", shell=True)
         post_title = ' '.join(post_body.split()[:5])
+        post_title = post_title.replace('"', '')
+        post_title = post_title.replace("'", '')
         post_date = time.strftime("%Y-%m-%d %H:%M:%S") + " +0000"
         newfile = time.strftime("%Y-%m-%d") + "-" + post_title + ".markdown"
-        newfile = newfile.replace('"', '')
-        newfile = newfile.replace("'", '')
         post_dict={ 'post_title':post_title, 'post_body':post_body, \
             'post_date':post_date, 'layout':'post' }
 
@@ -145,4 +145,3 @@ if __name__ == '__main__':
             myexam.commit_code()
     except Exception, e:
         print(sys.exc_info()[0])
-
