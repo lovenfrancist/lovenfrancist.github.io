@@ -16,7 +16,7 @@
 title: My Exam
 email: loven.francis@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Version: 0.16.82
+  Version: 0.17.82
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
