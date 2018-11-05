@@ -1,0 +1,31 @@
+- name: commit code
+  shell: |
+    /usr/bin/git remote set-url origin git@github.com:lovenfrancist/lovenfrancist.github.io.git
+    eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+
+    /usr/bin/git add -A
+    /usr/bin/git commit -m 'New Post - {{ ansible_date_time.date }}'
+  register: commit_code_out
+
+- name: commit_code_out
+  debug:
+    msg: "{{ commit_code_out }}"
+
+- name: Get current version
+  include_vars:
+    file: "{{ playbook_dir }}/_config.yml"
+
+- name: Initialize current_version variable
+  set_fact:
+    current_version: "{{ description.split(':')[1].strip() }}"
+
+- name: create tag
+  shell: |
+    /usr/bin/git tag -a v{0} -m, 'v{{ current_version }}'
+    /usr/bin/git push origin v{{ current_version }}
+  register: create_tag_out
+  when: {{ envi }} == "staging"
+
+- name: create_tag_out
+  debug:
+    msg: "{{ create_tag_out }}"
