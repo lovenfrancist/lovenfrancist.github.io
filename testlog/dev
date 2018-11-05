@@ -20,3 +20,51 @@ Added new post: Q: Why do WASPs play
 Bumped version to : 0.11.30
 Added new post: Q: What lies on the
 Bumped version to : 0.12.31
+Added new post: Q: Do you know what
+Bumped version to : 0.12.32
+Configuration file: /home/ubuntu/lovenfrancist.github.io/_config.yml
+            Source: /home/ubuntu/lovenfrancist.github.io
+       Destination: /var/www/myexam.dev/html
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.734 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+
+Compiled at: /var/www/myexam.dev/html
+
+Agent pid 5879
+
+
+[develop 3c87f3f] New Post 2018-11-05 16:07:06
+ Committer: Ubuntu <ubuntu@ip-172-31-28-252.ap-southeast-1.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 17 files changed, 170 insertions(+), 1 deletion(-)
+ create mode 100644 _posts/2018-11-05-A classic is something that.markdown
+ create mode 100644 _posts/2018-11-05-A man was reading The.markdown
+ create mode 100644 _posts/2018-11-05-Alimony and bribes will engage.markdown
+ create mode 100644 _posts/2018-11-05-Exercise caution in your daily.markdown
+ create mode 100644 _posts/2018-11-05-Q: Do you know what.markdown
+ create mode 100644 _posts/2018-11-05-Q: What lies on the.markdown
+ create mode 100644 _posts/2018-11-05-Q: Why do WASPs play.markdown
+ create mode 100644 _posts/2018-11-05-Q: Why does Washington have.markdown
+ create mode 100644 "_posts/2018-11-05-They spell it \"da Vinci\".markdown"
+ create mode 100644 _posts/2018-11-05-You have literary talent that.markdown
+ create mode 100644 _posts/2018-11-05-You like to form new.markdown
+ create mode 100644 _posts/2018-11-05-You will be advanced socially,.markdown
+ create mode 100644 testlog/build
+ create mode 100644 testlog/dev
+ create mode 100644 testlog/poll
+ create mode 100644 testlog/staging
+
