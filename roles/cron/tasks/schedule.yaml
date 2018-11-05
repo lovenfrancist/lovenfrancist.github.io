@@ -6,7 +6,7 @@
 
 - name: ensure dev playbook runs every 10 mins
   cron:
-    name: "run script for DEV"
+    name: "run playbook for DEV"
     minute: "*/10"
     job: "(cd {{ playbook_dir }} && exec ansible-playbook my_exam_playbook.yaml --tags 'commit')"
 
@@ -18,7 +18,7 @@
 
 - name: ensure staging playbook runs every hour
   cron:
-    name: "run script for STAGING"
+    name: "run playbook for STAGING"
     minute: "*/60"
     job: "(cd {{ playbook_dir }} && exec ansible-playbook my_exam_playbook.yaml --tags 'commit')"
 
