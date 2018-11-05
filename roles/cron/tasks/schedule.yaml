@@ -14,4 +14,4 @@
   cron:
     name: "run script for polling"
     minute: "*/5"
-    job: "{{ playbook_dir }}/poll_github.sh)"
+    job: "{{ playbook_dir }}/poll_github.sh"
