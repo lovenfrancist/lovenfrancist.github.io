@@ -2,16 +2,16 @@
   cron:
     name: "run script for DEV"
     minute: "*/10"
-    job: "(cd ~/lovenfrancist.github.io && exec python my_exam.py dev)"
+    job: "python {{ playbook_dir }}/my_exam.py dev"
 
 - name: ensure staging script runs every hour
   cron:
     name: "run script for STAGING"
     minute: "*/60"
-    job: "(cd ~/lovenfrancist.github.io && exec python my_exam.py staging)"
+    job: "python {{ playbook_dir }}/my_exam.py staging"
 
 - name: ensure polling script runs every 5 mins
   cron:
     name: "run script for polling"
     minute: "*/5"
-    job: "(cd ~/lovenfrancist.github.io && exec ./poll_github.sh)"
+    job: "{{ playbook_dir }}/./poll_github.sh"
