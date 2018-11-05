@@ -1,4 +1,6 @@
 #!/bin/bash
 
-DIRECTORY=`dirname $0`
-echo $DIRECTORY
+DIR=`dirname $0`
+echo $DIR
+
+(cd $DIR && exec python my_exam.py $1)
