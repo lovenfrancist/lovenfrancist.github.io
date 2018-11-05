@@ -37,6 +37,13 @@
 
     - include_role:
         name: my_exam
+        tasks_from: post_bump
+      vars:
+        envi: "{{ env }}"
+      tags: [ 'never', 'commit' ]
+
+    - include_role:
+        name: my_exam
         tasks_from: build
       vars:
         envi: "{{ env }}"

@@ -1,0 +1,13 @@
+- name: new post and bump version
+  shell: python my_exam.py {{ envi }}
+  register: post_bump_out
+  args:
+    chdir: "{{ playbook_dir }}"
+  tags:
+    - commit
+
+- name: post_bump_out
+  debug:
+    msg: "{{ post_bump_out }}"
+  tags:
+    - commit
