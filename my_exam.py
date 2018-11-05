@@ -8,7 +8,7 @@ from string import Template
 class MyExam:
     def __init__(self, env):
         self.env = env.lower()
-        self.myexam_path = os.path.realpath(__file__)
+        self.myexam_path = os.path.dirname(os.path.realpath(__file__))
 
     def add_post(self):
         # initialize variables
