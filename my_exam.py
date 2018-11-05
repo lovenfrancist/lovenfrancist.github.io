@@ -136,14 +136,14 @@ if __name__ == '__main__':
         if env.lower() in ['dev', 'staging']:
             myexam.bump_version()
 
-        # compile jekyll
-        try:
-            myexam.compile_site(sys.argv[2])
-        except IndexError:
-            myexam.compile_site()
-
-        # commit
-        if env.lower() in ['dev', 'staging']:
-            myexam.commit_code()
-    except Exception, e:
-        print(sys.exc_info()[0])
+    #     # compile jekyll
+    #     try:
+    #         myexam.compile_site(sys.argv[2])
+    #     except IndexError:
+    #         myexam.compile_site()
+    #
+    #     # commit
+    #     if env.lower() in ['dev', 'staging']:
+    #         myexam.commit_code()
+    # except Exception, e:
+    #     print(sys.exc_info()[0])
