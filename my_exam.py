@@ -67,8 +67,8 @@ class MyExam:
         print "Compiling at: {0}".format(build_dir)
 
         if os.path.isdir(build_dir):
-            print subprocess.check_output(["bundle", "exec", \
-            "jekyll", "build", "-d", "{0}".format(build_dir)], shell=True)
+            print subprocess.check_output("bundle exec \
+            jekyll build -d {0}".format(build_dir), shell=True)
             print "Compiled at: {0}".format(build_dir)
         else:
             if env.lower() == 'dev':
@@ -77,12 +77,12 @@ class MyExam:
                 build_dir = '/var/www/myexam.staging/html'
 
             if os.path.isdir(build_dir):
-                print subprocess.check_output(["bundle", "exec", \
-                "jekyll", "build", "-d", "{0}".format(build_dir)], shell=True)
+                print subprocess.check_output("bundle exec \
+                jekyll build -d {0}".format(build_dir), shell=True)
                 print "Compiled at: {0}".format(build_dir)
             else:
-                print subprocess.check_output(["bundle", "exec", \
-                "jekyll", "build"], shell=True)
+                print subprocess.check_output("bundle exec \
+                jekyll build", shell=True)
                 print "Compiled at: {0}".format(build_dir)
 
         print subprocess.check_output("sudo nginx -s reload", shell=True)

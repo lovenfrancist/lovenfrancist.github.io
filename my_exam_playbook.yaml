@@ -6,8 +6,10 @@
   pre_tasks:
     - name: Initialize environment
       set_fact:
-        envi: dev
-      when: envi is not defined
+        env: dev
+      when: env is not defined
+      tags:
+        - always
   tasks:
     - include_role:
         name: packages
@@ -36,4 +38,6 @@
     - include_role:
         name: my_exam
         tasks_from: build
-      tags: [ 'never', 'build' ]
+      vars:
+        envi: "{{ env }}"
+      tags: [ 'never', 'build', 'commit' ]

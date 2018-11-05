@@ -6,7 +6,11 @@
   register: build_envi_out
   notify:
     - restart nginx
+  tags:
+    - always
 
 - name: build_envi_out
   debug:
     msg: "{{ build_envi_out }}"
+  tags:
+    - always
