@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 /usr/bin/git remote update
 
@@ -22,12 +22,12 @@ elif [ $LOCAL = $BASE ]; then
 
     if [ "$TAG" == "$NEWTAG" ]; then
         echo "New commit. Deploying to DEV"
-        # compile
-        # update DEV domain
+        # compile and update DEV domain
+        bundle exec jekyll build -d /var/www/myexam.dev/html
     else
+        # compile and update STAGING domain
         echo "New tag. Deploying to STAGING"
-        # compile
-        # update STAGING domain
+        bundle exec jekyll build -d /var/www/myexam.staging/
     fi
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
