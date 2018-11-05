@@ -39,6 +39,7 @@
 
 - name: push tag
   shell: |
+    /usr/bin/git commit
     /usr/bin/git push origin v{{ current_version }}
   register: create_tag_out
   when: envi == "staging"
