@@ -1,23 +1,12 @@
-- name: build DEV
-  shell: python my_exam.py build /var/www/myexam.dev/html
+- name: "build {{ envi }}"
+  shell: python my_exam.py build /var/www/myexam.{{ envi }}/html
   args:
     executable: /bin/bash
     chdir: "{{ playbook_dir }}"
-  register: build_dev_out
-
-- name: build_dev_out
-  debug:
-    msg: "{{ build_dev_out }}"
-
-- name: build STAGING
-  shell: python my_exam.py build /var/www/myexam.staging/html
-  args:
-    executable: /bin/bash
-    chdir: "{{ playbook_dir }}"
-  register: build_staging_out
+  register: build_envi_out
   notify:
     - restart nginx
 
-- name: build_staging_out
+- name: build_envi_out
   debug:
-    msg: "{{ build_staging_out }}"
+    msg: "{{ build_envi_out }}"
