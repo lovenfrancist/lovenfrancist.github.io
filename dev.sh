@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-(cd /home/ubuntu/lovenfrancist.github.io && python my_exam.py dev)
+DIRECTORY=`dirname $0`
+echo $DIRECTORY
