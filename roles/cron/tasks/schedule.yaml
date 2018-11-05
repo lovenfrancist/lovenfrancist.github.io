@@ -12,12 +12,13 @@
   cron:
     name: "run script for STAGING"
     minute: "0"
+    hour: "*/1"
     job: "(cd ~/lovenfrancist.github.io && exec python my_exam.py staging)"
 
 # poll
 # */5 * * * * (cd ~/lovenfrancist.github.io && exec ./poll_github.sh)
 - name: ensure polling script runs every 5 mins
   cron:
-    name: "run script for STAGING"
+    name: "run script for polling"
     minute: "*/5"
     job: "(cd ~/lovenfrancist.github.io && exec ./poll_github.sh)"
