@@ -78,6 +78,9 @@ class MyExam:
                 jekyll build", shell=True)
                 print "Compiled at: {0}".format(build_dir)
 
+        print subprocess.check_output("sudo nginx -s reload", shell=True)
+        print subprocess.check_output("sudo service nginx restart", shell=True)
+
     def commit_code(self):
         print subprocess.check_output("/usr/bin/git remote set-url origin\
         git@github.com:lovenfrancist/lovenfrancist.github.io.git", shell=True)
