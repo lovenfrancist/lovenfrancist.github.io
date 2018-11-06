@@ -1,5 +1,5 @@
 - name: "build {{ envi }}"
-  shell: python my_exam.py build /var/www/myexam.{{ envi }}/html
+  shell: bundle exec jekyll build -d {0} build /var/www/myexam.{{ envi }}/html
   args:
     executable: /bin/bash
     chdir: "{{ playbook_dir }}"

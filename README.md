@@ -72,7 +72,14 @@ Execute the playbook `my_exam_playbook.yaml` to provision the server where this 
 ansible-playbook -i inventory my_exam_playbook.yaml
 ```
 
-## Python script
+The Ansible playbook will already run the `my_exam.py` script using `cron` to add a new post and commit/tag, but if you want to run the script manually, below are the options:
+
+```bash
+ansible-playbook my_exam_playbook.yaml --tags 'commit' --extra-vars 'env=dev'
+ansible-playbook my_exam_playbook.yaml --tags 'commit' --extra-vars 'env=staging'
+```
+
+<!-- ## Python script
 The Ansible playbook will already run the `my_exam.py` script using `cron`, but if you want to run the script manually, below are the options:
 
 ```bash
@@ -88,7 +95,7 @@ This script will already be scheduled to run through `cron`, but to run the scri
 
 ```bash
 ./poll_github.sh
-```
+``` -->
 
 # Other info
 ## Build directories
