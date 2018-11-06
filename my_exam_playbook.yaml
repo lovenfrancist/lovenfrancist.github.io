@@ -1,0 +1,57 @@
+---
+- name: Create new post
+  hosts: localhost
+  gather_facts: yes
+  connection: ssh
+  pre_tasks:
+    - name: Initialize environment
+      set_fact:
+        env: dev
+      when: env is not defined
+      tags:
+        - always
+  tasks:
+    - include_role:
+        name: packages
+        tasks_from: install
+
+    - include_role:
+        name: nginx
+        tasks_from: configure
+
+    - include_role:
+        name: cron
+        tasks_from: schedule
+
+    - include_role:
+        name: my_exam
+        tasks_from: build
+      vars:
+        envi: dev
+
+    - include_role:
+        name: my_exam
+        tasks_from: build
+      vars:
+        envi: staging
+
+    - include_role:
+        name: my_exam
+        tasks_from: post_bump
+      vars:
+        envi: "{{ env }}"
+      tags: [ 'never', 'commit' ]
+
+    - include_role:
+        name: my_exam
+        tasks_from: build
+      vars:
+        envi: "{{ env }}"
+      tags: [ 'never', 'commit' ]
+
+    - include_role:
+        name: my_exam
+        tasks_from: commit
+      vars:
+        envi: "{{ env }}"
+      tags: [ 'never', 'commit' ]

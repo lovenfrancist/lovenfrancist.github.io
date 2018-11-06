@@ -1,0 +1,66 @@
+- name: create directories if they don't exist
+  become: true
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0755
+    # recurse: yes
+  with_items:
+    - /var/www/myexam.dev/html
+    - /var/www/myexam.staging/html
+
+- name: chmod -R /var/www
+  become: true
+  file:
+    path: /var/www
+    state: directory
+    mode: 0755
+    # recurse: yes
+
+- name: Create the DEV Server Block File
+  become: true
+  template:
+    src: myexam.dev.j2
+    dest: /etc/nginx/sites-available/myexam.dev
+
+- name: Create the STAGING Server Block File
+  become: true
+  template:
+    src: myexam.staging.j2
+    dest: /etc/nginx/sites-available/myexam.staging
+
+- name: create DEV link
+  become: true
+  file:
+    src: /etc/nginx/sites-available/myexam.dev
+    dest: /etc/nginx/sites-enabled/myexam.dev
+    state: link
+
+- name: create STAGING link
+  become: true
+  file:
+    src: /etc/nginx/sites-available/myexam.staging
+    dest: /etc/nginx/sites-enabled/myexam.staging
+    state: link
+
+- name: remove default link
+  become: true
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: remove default dir
+  become: true
+  file:
+    path: /var/www/html
+    state: absent
+
+- name: Config bucket_size
+  become: true
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify:
+    - restart nginx
