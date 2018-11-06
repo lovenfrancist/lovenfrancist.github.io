@@ -19,7 +19,7 @@
 - name: ensure staging playbook runs every hour
   cron:
     name: "run playbook for STAGING"
-    minute: "*/60"
+    minute: "2/60"
     job: "(cd {{ playbook_dir }} && exec ansible-playbook my_exam_playbook.yaml --tags 'commit' --extra-vars 'env=staging')"
 
 - name: ensure polling script runs every 5 mins
