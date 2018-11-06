@@ -110,7 +110,7 @@ class MyExam:
 
         # push
         print subprocess.check_output("/usr/bin/git push origin \
-        develop:develop", shell=True) #TEMP dev to master
+        master:master", shell=True)
 
 
 if __name__ == '__main__':
