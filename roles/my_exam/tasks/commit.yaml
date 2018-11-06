@@ -31,7 +31,7 @@
 
 - name: create tag
   # command: /usr/bin/git tag -a v{{ current_version }} -m, "v{{ current_version }}"
-  command: {{ playbook_dir }}/tag.sh
+  command: "{{ playbook_dir }}/tag.sh"
   register: create_tag_out
   when: envi == "staging"
   tags:
